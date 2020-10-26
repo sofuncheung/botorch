@@ -81,7 +81,7 @@ def columnwise_clamp(
             raise ValueError("Minimum values must be <= maximum values")
     Xout = X
     if min_bounds is not None:
-        Xout = Xout.max(min_bounds)
+        Xout = Xout.max(min_bounds) # torch.max compare and pick the large one.
     if max_bounds is not None:
         Xout = Xout.min(max_bounds)
     if raise_on_violation and not torch.allclose(Xout, X):
